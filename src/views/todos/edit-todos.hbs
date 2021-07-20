@@ -1,0 +1,47 @@
+{{#each errors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{text}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/each}}
+
+<section class="container">
+    <h1 align="center">EDIT TODOS</h1>
+
+    <!-- form to create task -->
+    <form action="/todos/edit-todos/{{todos._id}}?_method=PUT" method="POST">
+         <input type="hidden" name="_method" value="PUT">
+        <table class="table">
+            <thead>
+                <tr class="table-active">
+                    <th>Add Task</th>
+                    <th>category</th>
+                    <th>date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <input type="text" name="description" value="{{todos.description}}" required></input>
+                    </td>
+                    <td> <select name="category" required>
+
+                            <option>PERSONAL</option>
+                            <option>WORK</option>
+                            <option>SCHOOL</option>
+                            <option>CLEANING</option>
+                            <option>OTHER</option>
+
+                        </select></td>
+                    <td> <input type="date" name="date" value="{{todos.date}}" required></td>
+                    <td><input type="submit" class="btn btn-success" value="Save"></td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </form>
+</section>
+

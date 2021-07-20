@@ -1,0 +1,38 @@
+<div>
+    <h1 align="center">
+        Todo List
+    </h1>
+    <form>
+        <table class="table table-hover table-secondary">
+            <thead>
+                <tr class="table-active">
+                    <th>Task</th>
+                    <th>Category</th>
+                    <th>Due date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                
+                {{#each todos}}
+                <tr>
+                    <td>{{description}}</td>
+                    <td>{{category}}</td>
+                    <td>{{date}}</td>
+                    <td> <a href="/todos/edit/{{_id}}"><i class="fas fa-edit"></i></a></td>
+                  <td>
+                        <form action="/todos/delete/{{_id}}?_method=DELETE" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger btn-block btn-sm"><i
+                                    class="fas fa-trash-alt"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+    </form>
+</div>
